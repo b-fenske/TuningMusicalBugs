@@ -1,0 +1,44 @@
+//Author: Bryce Fenske
+//If there are any errors or changes to the site, let me know so this can be updated.
+
+This file and accompanying MIDI/mp3s were generated as a baseline to test rhythm/duration. The mp3s are at 120bpm and typically a bar long. Sorry, they don't loop very well :( I've added in a high hat playing quarters to help discern the subdivisions. To emulate the high hat on the site (if all is behaving correctly), have one voice play quarters for the length of the piece.
+
+Suggestion: If you're just checking that duration works, pattern 9 is probably the easiest to follow.
+
+You should be able to load the MIDI files directly into the site.
+Alternatively, to input a pattern, select "custom" under duration input, paste the numbers for the pattern (twice or more for better playback), and under duration mapping change the bounds to 0-9. There will most likely be extra notes added in automatically. This is to insure every note from pitch mapping has a duration. For better playback comparison, change the tempo to 120bpm.
+
+key:
+| = or
+w|1 = whole note
+h|2 = half note
+q|4 = quarter
+8 = eigth
+16 = sixteenth
+dx = xth dotted note (Where x is one of the above notes).
+
+Note codes for website (v3.x)
+16 = 0	
+d16 = 1
+8 = 2	
+d8 = 3
+q = 4	
+dq = 5
+h = 6	
+dh = 7
+w = 8	
+dw = 9
+
+p1: 4, 4, 4, 4
+p2: 2, 2, 2, 2, 2, 2, 2, 2
+p3: 6, 6
+p4: 5, 5, 5, 5, 5, 5, 5, 5
+p5: 3, 3, 3, 3, 3, 3, 3, 3
+p6: 8, 8
+p7: 7, 7, 7, 7
+p8: 9, 9
+p9: 4,2,2,4,0,0,0,0
+p10: 0, 0, 2, 0, 0, 2, 2, 0, 0, 2
+p11: 3, 0, 3, 0, 0, 2, 2, 2, 0
+p12: 5, 4, 3, 2, 0
+p13: 7, 1, 1, 1

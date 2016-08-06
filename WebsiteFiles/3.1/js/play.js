@@ -42,11 +42,11 @@ $(function () {
 	
 	//disablePlay(true);
 	
-	//BF 7/30/16
-	//defualt: piano, vibraphone, marimba, classical guitar, synth drum
-	//doesn't seem to work for first load but works after. Searching more.
+	
 	MIDI.loader = new widgets.Loader("Loading Instrument...");
 
+	//BF 7/30/16
+	//defualt: piano, vibraphone, marimba, classical guitar, synth drum
 	MIDI.loadPlugin({
 	soundfontUrl: "/js/midiJs/soundfont/",
 	instrument: [ "acoustic_grand_piano", "acoustic_guitar_nylon", "vibraphone", "marimba", "synth_drum" ],

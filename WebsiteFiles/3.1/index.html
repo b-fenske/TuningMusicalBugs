@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,16 +31,16 @@
             <!-- Menu tabs - No need to edit //-->
             <ul class="" id="menu">
                
-                <li>
+                <li class="L1">
                     <a href="" id="welcome" class="menu_active">Welcome</a>
-                </li>
+                </li> <p>&rarr;</p>
                 
-                <li>
+                <li class="L2">
                     <a href="" id="howto" class="howto_active">How To</a>
-                </li>
+                </li> <p>&rarr;</p>
                 
-               
-                    <div class="voiceSelect">
+               <li id="VS">
+                <div class="voiceSelect">
                     <label>
                     <select id="welcomeChoice">
                         <option>1</option>
@@ -50,24 +51,30 @@
 
                     <div>Voices</div>
                     </label>
-            </div>    
+                </div>
+                </li>
                 
                 
-                <li>
+                <li class="L3">
                     <a href="" id="pitch_input">Pitch Input</a>
-                </li>
-                <li>
+                </li> <p>&rarr;</p>
+                
+                <li class="L4">
                     <a href="" id="pitch_mapping">Pitch Mapping</a>
-                </li>
-                <li>
+                </li> <p>&rarr;</p>
+                
+                <li class="L5">
                     <a href="" id="duration_input">Duration Input</a>
-                </li>
-                <li>
+                </li> <p>&rarr;</p>
+                
+                <li class="L6">
                     <a href="" id="duration_mapping">Duraton Mapping</a>
-                </li>
-                <li>
+                </li> <p>&rarr;</p>
+                
+                <li class="L7">
                     <a href="" id="scale_options">Scale Options</a>
-                </li>
+                </li> <p>&rarr;</p>
+                
                 <li>
                     <a href="" id="play" onClick='getOutput();'>Play</a>
                 </li>
@@ -157,18 +164,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
+                     
 				</div>
 				<div class='modal-body'>
 					<textarea id='pitchInputUtilityBox' style='width: 100%' value='124'></textarea>
-					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReverseDiv')">Reverse  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchInputUtilityASCIIDiv')">ASCII Conversion  <span class='glyphicon glyphicon-list'></span></button><br>
 					<div id='pitchInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -180,6 +188,28 @@
 					</div>
 					
 					</div>
+                    
+                    <div id='pitchInputUtilityASCIIDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>This tool converts comma separated keyboard characters to corresponding ASCII values.  
+                        <br><br>You can add commas to your source material by using the "Add Commas" or "Replace" tools above. </b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">Convert to ASCII</button>
+						</div>
+						<br>
+                    </div>    
+                    
+                    <div id='pitchInputUtilityReverseDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Reverse the order of the data.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchInputUtilityBox'))">Reverse</button>
+						</div>
+						<br>
+					</div>
+                    
 					<div id='pitchInputUtilityDecimalDiv' class='util-div' style='display: none'>
 						<hr>
 						<br>
@@ -227,9 +257,14 @@
 					<div id='pitchInputUtilityReplaceDiv' class="horizontalAlignCenter util-div" style='display: none'>
 					<hr>
 					<br>
-					<b>Replace characters in the stream.</b><br><br>
+					<b>Replace characters in the stream</b><br><br>
+					<button type="button" class="btn btn-default" onclick="replaceAll(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityReplaceAllTarget'), document.getElementById('pitchInputUtilityReplaceAllSubstitute'))" >Replace</button>
+					<input type='text' id='pitchInputUtilityReplaceAllTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceAllSubstitute' style='width: 36px' maxlength='3'>
+                    
+                    <br><br><b>Replace data in comma-separated list</b><br><br>
 					<button type="button" class="btn btn-default" onclick="replace(document.getElementById('pitchInputUtilityBox'), document.getElementById('pitchInputUtilityReplaceTarget'), document.getElementById('pitchInputUtilityReplaceSubstitute'))" >Replace</button>
-					<input type='text' id='pitchInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>
+					<input type='text' id='pitchInputUtilityReplaceTarget' style='width: 36px' maxlength='3'> with <input type="text" id='pitchInputUtilityReplaceSubstitute' style='width: 36px' maxlength='3'>    
+                        
 					</div>
 					<div id='pitchInputUtilityFilterDiv' class='util-div' style='display: none'>
 						<hr>
@@ -278,18 +313,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationInputUtilityBox' style='width: 100%' value='124'></textarea>
-					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReverseDiv')">Reverse  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationInputUtilityASCIIDiv')">ASCII Conversion  <span class='glyphicon glyphicon-list'></span></button>
+					<br>
 					<div id='durationInputUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -299,6 +335,26 @@
 					<div class="horizontalAlignCenter">
 					Insert a comma every <input type="text" id='durationInputUtilityCommaValue' style='width: 40px' maxlength='4'> character(s). <button type="button" onclick='addCommas("#durationInputUtilityCommaValue", "#durationInputUtilityBox")'class="btn btn-default">Insert</button>
 					</div>
+					</div>
+                    
+                     <div id='durationInputUtilityASCIIDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>This tool converts comma separated keyboard characters to corresponding ASCII values.  
+                        <br><br>You can add commas to your source material by using the "Add Commas" or "Replace" tools above. </b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('durationInputUtilityBox'))">Convert to ASCII</button>
+						</div>
+						<br>
+					</div> 
+                    <div id='durationInputUtilityReverseDiv' class='util-div' style='display: none'>
+						<hr>
+						<br>
+						<b>Reverse the order of the data.</b><br><br>
+						<div class='horizontalAlignCenter'>
+						<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationInputUtilityBox'))">Reverse</button>
+						</div>
+						<br>
 					</div>
 					<div id='durationInputUtilityDecimalDiv' style='display: none'>
 						<hr>
@@ -398,18 +454,19 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='pitchMapUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('pitchMapUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#pitchMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+                    <br>
 					<div id='pitchMapUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
@@ -517,19 +574,20 @@
 			<div class='modal-content'>
 				<div class='modal-header'>
 					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
-					<h3 class='modal-title' id='myModalLabel'>Data Utilities</h3>
+					<h3 class='modal-title' id='myModalLabel'>Data Workspace</h3>
 				</div>
 				<div class='modal-body'>
 					<textarea id='durationMapUtilityBox' style='width: 100%' value='124'></textarea>
 					<button type="button" class="btn btn-default" onclick="reverseNotes(document.getElementById('durationMapUtilityBox'))">Reverse</button>
-					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityInvertDiv')">Invert  <span class='glyphicon glyphicon-list'></span></button> 
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityFilterDiv')">Parse by Range  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilitySampleDiv')">Sample Rate  <span class='glyphicon glyphicon-list'></span></button>
+                    <button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityAddCommaDiv')">Add Commas  <span class='glyphicon glyphicon-list'></span></button>
 					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityReplaceDiv')">Replace  <span class='glyphicon glyphicon-list'></span></button> 
-					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button><br>
-					<div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
+					<button type="button" class="btn btn-default" onclick="toggleSelection('#durationMapUtilityDecimalDiv')">Decimals <span class='glyphicon glyphicon-list'></span></button>
+					<button type="button" class="btn btn-default" onclick="charToNote(document.getElementById('pitchInputUtilityBox'))">ASCII Conversion</button>
+					<br>
+                    <div id='durationMapUtilityAddCommaDiv' class='util-div' style='display: none'>
 					<hr>
 					<br>
 					<b>These tools will help separate the data for use in other functions.<br>
@@ -796,14 +854,21 @@
                         <br />
                         <br>
                         This Web site has interactive tools that provide a unique learning experience for users, regardless of their musical training. Students of music composition can explore algorithmic composition, while others can create musical representations of models for the purpose of aural interpretation and analysis. Here, the algorithmic process is used in a creative context so that users can convert sequences of numbers into sounds.
-                                                <br><br />Looking for v3.0? Click <a href="http://musicalgorithms.org/3.0/index.html">here</a>
-                                                <br />Looking for v2.0? Click <a href="http://musicalgorithms.org/index.php">here</a> 
-						<br />Looking for v1.0? Click <a href="http://musicalgorithms.ewu.edu/">here</a>                     
+                        <br><br />
+                        
+                        <select name="Previous Versions" id="previousmenu">
+                              <option value="title" disabled selected hidden>Previous Versions</option>
+                              <option value="3.1"><a href="http://musicalgorithms.org/3.1">Version 3.1</a></option>
+                              <option value="3.0"><a href="http://musicalgorithms.org/3.0">Version 3.0</a></option>
+                              <option value="2.0"><a href="http://musicalgorithms.org/2.0">Version 2.0</a></option>
+                              <option value="1.0"><a href="http://musicalgorithms.org/1.0">Version 1.0</a></option>
+                        </select>
+                                      
                         </p>
                         
                 <div id="maint">
                     <img src="./images/maintsign.jpg" alt="Maintenance Sign">
-				    <h3>We are currently performing upgrades and fixing a duration mapping bug for this current version(3.1). These changes should be in place by June 10.</h3>
+				    <p>Please use version 3.0 for a more reliable experience. We are continuing to add new features, make upgrades, and fix bugs. A stable 3.2 version will be released by mid August.</p>
 				</div>
                         
                     <blockquote>
@@ -816,13 +881,13 @@
 					</small>
 				</blockquote>
 				
-				<sub style="color: #777;">Music Algorithms updated & refactored by: Isaac Deal, Cody Demianew, Tyler Herrin, Anna Kravtsova, and Evan Nilson.</sub>
+				<sub style="color: #777;">Music Algorithms updated & refactored by: Bryce Fenske, Chase Myers, Stormi Sprague, David Walker, James White.</sub>
 
                 </div>
                 
                 <div class="howto">
                     <h2>How to</h2>
-                        <h5>There are 4 basic steps to create music from your data!</h5>
+					<h4>There are 6 basic steps to create music from your data!</h4>
                         <ul id="howtolist">
                            <li>
                                <h4 style="text-decoration: underline;">Help for all pages</h4>
@@ -840,15 +905,15 @@
                                     
                                </ul>
                            </li>
-                           <h3 style="text-decoration: underline;">Steps</h3>
+                           <h4 style="text-decoration: underline;">Steps</h4>
                             <li>
-                                <h4>1a) Pitch Input</h4>
+                                <h4>1) Pitch Input</h4>
                                 <ul>
                                     <li>This is where you enter your starting data, what you want to turn into music.</li><br>
                                 </ul>
                             </li>
                             <li>
-                               <h4>2a) Pitch Mapping</h4>
+                               <h4>2) Pitch Mapping</h4>
                                 <ul>
                                     <li>
                                         This is where your data values are modified to be read as a musical note; the range of 1-88 represents the 88 keys on a piano with a value of 0 representing silence (no pitch).
@@ -857,7 +922,7 @@
                                 </ul>
                             </li>
                             <li>
-                               <h4>1b) Duration Input</h4>
+                               <h4>3) Duration Input</h4>
                                 <ul>
                                     <li>This is where each number of your data set is given a number representing a length of time to play. A higher number plays the respective note for a longer amount of time.
                                     </li>
@@ -865,7 +930,7 @@
                                 </ul>
                             </li>
                             <li>
-                               <h4>2b) Duration Mapping</h4>
+                               <h4>4) Duration Mapping</h4>
                                 <ul>
                                     <li>
                                         This is where the duration values get mapped a range of durations, each being associated with the pitch from Pitch Mapping.
@@ -874,16 +939,16 @@
                                 </ul>
                             </li>
                             <li>
-                               <h4>3) Scale Options</h4>
+                               <h4>5) Scale Options</h4>
                                 <ul>
                                     <li>
-                                        This is where the Pitch Mapping output is adjusted to fit a designated musical scale, such that the output can fit the sound of the Scale By selection. 
+                                        This is where the Pitch Mapping output is adjusted to fit a designated musical scale. 
                                     </li>
                                     <br>
                                 </ul>
                             </li>
                             <li>
-                               <h4>4) Play!</h4>
+                               <h4>6) Play!</h4>
                                 <ul>
                                     <li>Here you can change tempo, instrument playing your data and save your creation as a MIDI file.
                                     </li><br>
@@ -923,11 +988,11 @@
                         <form id="download" action="js/php/createMidi.php" method="post">
                             <input type="hidden" id="notedata" name="notedata">
 							 <input type="hidden" id="binaryStream" name="binaryStream">
-                        </form>
+                        </form>	
 						
                         <div>Tempo:
-                            <input type="range" id="tempo" value="120" onchange="" style="width:80%" max="240" min="1">
-                            <Label id='bpm' style="float:right">120 bpm</label>
+                            <input type="range" id="tempo" value="60" onchange="" style="width:80%" max="240" min="1">
+                            <Label id='bpm' style="float:right">60 bpm</label>
                         </div>
                     </div>
                     

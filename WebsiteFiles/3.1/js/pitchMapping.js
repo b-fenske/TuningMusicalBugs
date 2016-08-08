@@ -421,9 +421,11 @@ function pitchMapping(numberOfVoice) {
 				<br /><label>Range:</label><input type='number' id='range"+ voiceCount + "' name='Range'>\
 				<label>to:</label><input type='number' id='to"+ voiceCount + "' name='to'>\
 				<img  id='pRangeImg"+ voiceCount + "'>\
-				<label>  Utilities:</label>\
+                <label>        </label>\
+                 <button id=\"keyboardButton\" onclick='openKeyboard()'></button></a>\
+            <!-- Utilities removed at client request <label>  Modify Input:</label>\
 				<button type='button' class='btn btn-default btn-sm' data-toggle='modal' onclick='openUtilities(\"pitchMapUtilityModal\",\"mapArea\","+voiceCount+",\"pitchMapUtilityBox\")'><span class='glyphicon glyphicon-wrench'></span></button><br>\
-				<br /><label>Output:</label>\
+            --> <br /><label>Output:</label>\
 				<textarea readonly id='mapArea"+ voiceCount + "'></textarea>\
 				<fieldset>\
 					<legend>Modifications</legend>\
@@ -438,4 +440,7 @@ function pitchMapping(numberOfVoice) {
 		</div>\
 		";
         $(".pitch_mapping").append($voice);
+}
+function openKeyboard(){
+    window.open('http://stormisprague.net/imgs/piano_keys.png', "Window Name", "height=800,width=295");
 }
